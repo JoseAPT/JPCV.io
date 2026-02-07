@@ -13,22 +13,24 @@
             --white: #ffffff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.35;
             color: var(--text-color);
-            background-color: #e9ecef;
-            font-size: 12px; /* Ligeramente más pequeño para compactar */
+            /* CAMBIO: Fondo blanco general para eliminar los bordes grises */
+            background-color: #ffffff; 
+            font-size: 12px;
         }
+
+        /* CAMBIO: Configuración del contenedor principal para eliminar sombra y ajustar ancho */
         .cv-container {
             width: 100%;
-            max-width: 850px; /* Más estrecho para reducir espacios laterales */
-            background: var(--white);
-            margin: 10px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            padding-bottom: 20px;
+            max-width: 216mm; /* Ancho estándar Oficio/Legal para mantener lectura cómoda */
+            margin: 0 auto; /* Centrado */
+            background: white;
+            box-shadow: none; /* Elimina la sombra de "tarjeta" */
+            min-height: 100vh; /* Asegura que ocupe todo el alto */
         }
 
         /* === HEADER === */
@@ -62,7 +64,7 @@
 
         /* === CUERPO === */
         .cv-body { padding: 20px 35px; }
-        section { margin-bottom: 15px; } /* Espacio entre secciones reducido */
+        section { margin-bottom: 15px; }
         h2 {
             font-size: 13px;
             text-transform: uppercase;
@@ -121,9 +123,10 @@
         .cert-link { color: var(--primary-color); text-decoration: underline; font-weight: bold; font-size: 11px; }
 
         @media print {
-            @page { size: A4 portrait; margin: 0.5cm; }
+            @page { size: A4 portrait; margin: 0; }
             body { background: #fff; -webkit-print-color-adjust: exact; }
-            .cv-container { box-shadow: none; margin: 0; width: 100%; border-radius: 0; }
+            .cv-container { box-shadow: none; margin: 0; width: 100%; max-width: 100%; border-radius: 0; }
+            header { padding: 15px 35px; }
         }
     </style>
 </head>
