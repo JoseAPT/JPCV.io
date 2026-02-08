@@ -1,588 +1,359 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Jose Angel Prieto - IT Specialist SSR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #0056b3;
-            --primary-dark: #004494;
             --secondary-color: #2c3e50;
             --accent-bg: #f4f7f6;
             --text-color: #333;
             --white: #ffffff;
-            --bg-body: #e9ecef;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.5;
+            /* CAMBIO: Usamos Roboto como fuente principal */
+            font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.25; 
             color: var(--text-color);
-            background-color: var(--bg-body);
-            font-size: 14px;
-            display: flex;
-            flex-direction: column; /* Para alinear el botón arriba */
-            align-items: center;
-            padding: 40px 20px;
-            min-height: 100vh;
+            background-color: #ffffff; 
+            font-size: 11.4px; 
+            -webkit-print-color-adjust: exact; 
         }
 
-        /* === BOTONES DE IDIOMA === */
-        .lang-switch {
-            margin-bottom: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 5px;
-        }
-
-        .lang-btn {
-            border: none;
-            background: transparent;
-            padding: 8px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            color: #666;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .lang-btn.active {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: 0 2px 5px rgba(0,86,179,0.3);
-        }
-
-        .lang-btn:hover:not(.active) {
-            background: #f0f0f0;
-            color: var(--primary-color);
-        }
-
-        /* Contenedor Principal */
         .cv-container {
             width: 100%;
-            max-width: 900px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            overflow: hidden;
-            position: relative;
-            /* Animación suave al cambiar idioma */
-            transition: height 0.3s ease;
         }
 
-        /* Ocultar contenido por defecto */
-        .cv-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        /* Mostrar el activo */
-        .cv-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* === ESTILOS GENERALES (Iguales a la versión anterior) === */
+        /* === HEADER === */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: var(--primary-color);
             color: var(--white);
-            padding: 40px;
+            padding: 15px 30px; 
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
-        
         .profile-img {
-            width: 130px; height: 130px;
+            width: 85px; height: 85px; 
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.4);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
         }
-        .profile-img:hover { transform: scale(1.05); }
-
         .header-content h1 { 
-            font-size: 32px; text-transform: uppercase; margin-bottom: 5px; 
-            letter-spacing: 1px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-size: 22px; 
+            text-transform: uppercase; 
+            margin-bottom: 2px; 
+            letter-spacing: 0.5px; 
+            font-weight: 700; /* Roboto Bold */
         }
-        .job-title { 
-            font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.9); 
-            margin-bottom: 15px; letter-spacing: 0.5px;
-        }
-
-        .contact-info { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; }
+        .job-title { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.95); margin-bottom: 6px; }
+        .contact-info { display: flex; flex-wrap: wrap; gap: 8px; font-size: 10px; }
         .contact-item { 
-            background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 50px;
-            text-decoration: none; color: white; display: flex; align-items: center;
-            transition: all 0.2s ease; backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.15); 
+            padding: 4px 8px; /* Ajuste ligero de padding */
+            border-radius: 4px; 
+            text-decoration: none; 
+            color: white; 
+            display: flex;
+            align-items: center;
+            /* Fix para emojis en PDF */
+            font-family: 'Segoe UI Emoji', 'Roboto', sans-serif; 
+            transition: background 0.2s;
         }
-        .contact-item:hover { 
-            background: white; color: var(--primary-color); transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .contact-item:hover { background: rgba(255,255,255,0.25); }
+        .contact-item, .contact-item:visited { color: white !important; } 
+
+        /* Clase específica para el icono SVG */
+        .icon-svg {
+            width: 14px;
+            height: 14px;
+            fill: white;
+            margin-right: 5px;
+            vertical-align: middle;
         }
 
-        .cv-body { padding: 40px; }
-        section { margin-bottom: 30px; }
+        /* === CUERPO === */
+        .cv-body { 
+            padding: 15px 30px; 
+        }
+        
+        section { margin-bottom: 9px; } 
         
         h2 {
-            font-size: 18px; text-transform: uppercase; color: var(--primary-color);
-            border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 15px;
-            font-weight: 700; letter-spacing: 0.5px;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            background: var(--accent-bg);
+            padding: 3px 10px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 700;
         }
 
-        p { color: #555; margin-bottom: 10px; text-align: justify; }
-
+        /* INFRAESTRUCTURA */
         .specs-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            background: #f8fafb;
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid #dce4ec;
         }
-        .spec-item { 
-            background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee;
-            text-align: center; font-size: 13px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .spec-item:hover { transform: translateY(-3px); border-color: var(--primary-color); }
-        .spec-item strong { display: block; color: var(--primary-color); font-size: 11px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
+        .spec-item { text-align: center; font-size: 10px; }
+        .spec-item strong { display: block; color: var(--primary-color); font-size: 9px; text-transform: uppercase; margin-bottom: 1px; }
 
-        .exp-item { margin-bottom: 20px; position: relative; padding-left: 20px; border-left: 3px solid #e0e0e0; transition: border-color 0.3s; }
-        .exp-item:hover { border-left-color: var(--primary-color); }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 5px; }
-        .exp-header span:first-child { font-weight: 700; font-size: 16px; color: var(--secondary-color); }
-        .exp-header span:last-child { font-size: 13px; color: #888; font-weight: 600; background: #f0f0f0; padding: 2px 8px; border-radius: 4px; }
-        .exp-company { color: var(--primary-color); font-weight: 600; font-style: italic; margin-bottom: 8px; display: block; }
+        /* EXPERIENCIA */
+        .exp-item { margin-bottom: 8px; border-left: 2px solid #f0f0f0; padding-left: 10px; }
+        .exp-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 11.5px; margin-bottom: 1px; }
+        .exp-company { color: var(--primary-color); font-style: italic; margin-bottom: 2px; display: block; font-size: 10.5px; }
+        .bullet-list { list-style: none; }
+        .bullet-list li { position: relative; padding-left: 14px; margin-bottom: 1px; text-align: justify; }
+        /* Fix para el símbolo de viñeta */
+        .bullet-list li::before { content: '▸'; color: var(--primary-color); position: absolute; left: 0; font-weight: bold; top: 0px; font-family: Arial, sans-serif; }
+        .kw { font-weight: 700; color: #000; }
+
+        /* SKILLS */
+        .skills-grid-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .skill-group { margin-bottom: 5px; }
+        .skill-title { font-weight: 700; font-size: 10.5px; color: var(--secondary-color); margin-bottom: 2px; display: block; border-bottom: 1px solid #eee; padding-bottom: 1px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+        .tag { background: #f0f4f8; padding: 1px 5px; border-radius: 3px; font-size: 9.5px; border: 1px solid #dee2e6; color: #333; }
         
-        .bullet-list { list-style: none; margin-top: 8px; }
-        .bullet-list li { position: relative; padding-left: 20px; margin-bottom: 6px; color: #555; }
-        .bullet-list li::before { content: '•'; color: var(--primary-color); position: absolute; left: 0; font-size: 18px; line-height: 1; top: -2px; }
-        .kw { font-weight: 600; color: #222; background: #fffbe6; padding: 0 4px; }
-
-        .skills-grid-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .skill-group { margin-bottom: 15px; }
-        .skill-title { font-weight: 700; font-size: 14px; color: var(--secondary-color); margin-bottom: 8px; display: block; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { 
-            background: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; 
-            border: 1px solid #dce4ec; color: #555; font-weight: 500;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.2s;
-        }
-        .tag:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
-
+        /* LAYOUT INFERIOR */
         .bottom-layout {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 5px;
+            padding-top: 8px;
+            border-top: 2px solid #f0f0f0;
         }
-        .edu-item { margin-bottom: 12px; }
-        .edu-title { font-weight: 700; font-size: 15px; color: var(--secondary-color); }
-        .edu-info { font-style: italic; color: #666; font-size: 13px; }
-        .cert-link { 
-            color: var(--primary-color); text-decoration: none; font-weight: bold; font-size: 14px; 
-            border: 1px solid var(--primary-color); padding: 2px 8px; border-radius: 4px; transition: all 0.2s;
-        }
-        .cert-link:hover { background: var(--primary-color); color: white; }
+        .edu-item { margin-bottom: 5px; }
+        .edu-title { font-weight: 700; font-size: 10.5px; }
+        .edu-info { font-style: italic; color: #555; font-size: 10px; }
+        .cert-link { color: var(--primary-color); text-decoration: none; font-weight: bold; font-size: 10.5px; border-bottom: 1px dotted var(--primary-color); }
 
-        .footer-credit {
-            text-align: center; padding: 20px; font-size: 12px; color: #aaa;
-            background: #f8fafb; border-top: 1px solid #eee;
+        .sub-divider {
+            margin: 6px 0;
+            border-top: 1px dashed #ddd;
         }
 
-        @media (max-width: 768px) {
-            body { padding: 10px; }
-            header { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .contact-info { justify-content: center; }
-            .cv-body { padding: 25px 20px; }
-            .skills-grid-main { grid-template-columns: 1fr; }
-            .bottom-layout { grid-template-columns: 1fr; gap: 30px; }
-            .header-content h1 { font-size: 26px; }
+        @media print {
+            @page { 
+                margin: 0; 
+                size: A4 portrait; 
+            }
+            body { 
+                margin: 0; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            .cv-container { width: 100%; max-width: none; }
+            section, .exp-item { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
 
-    <div class="lang-switch">
-        <button class="lang-btn active" onclick="switchLanguage('es')">Español</button>
-        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
-    </div>
-
     <div class="cv-container">
-        
-        <div id="cv-es" class="cv-content active">
-            <header>
-                <img src="https://drive.google.com/thumbnail?id=1JV2s-BmTU_5SqqBTEH8HT1JNEUJsKtHL&sz=w500" 
-                     onerror="this.src='perfil.jpg'" alt="Jose Angel Prieto" class="profile-img">
-                <div class="header-content">
-                    <h1>Jose Angel Prieto</h1>
-                    <p class="job-title">Especialista IT SSR | Administrador de Empresas | Project Coordinator</p>
-                    <div class="contact-info">
-                        <a href="tel:+542613432056" class="contact-item">📞 +54 261 343 2056</a>
-                        <a href="mailto:joseapt.arg2603@gmail.com" class="contact-item">📧 Contactar</a>
-                        <a href="https://www.linkedin.com/in/jose-angel-prieto-77048b1b2/" target="_blank" class="contact-item">🔗 LinkedIn</a>
-                        <span class="contact-item">📍 Mendoza, ARG</span>
-                    </div>
+        <header>
+            <img src="https://drive.google.com/thumbnail?id=1JV2s-BmTU_5SqqBTEH8HT1JNEUJsKtHL&sz=w500" 
+                 onerror="this.src='perfil.jpg'" alt="Jose Angel Prieto" class="profile-img">
+            <div class="header-content">
+                <h1>Jose Angel Prieto</h1>
+                <p class="job-title">Especialista IT SSR | Administrador de Empresas | Project Coordinator</p>
+                <div class="contact-info">
+                    <a href="https://wa.me/5492613432056" target="_blank" class="contact-item">
+                        <svg class="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                    
+                    <a href="tel:+542613432056" class="contact-item">📞 +54 261 343 2056</a>
+                    <a href="mailto:joseapt.arg2603@gmail.com" class="contact-item">📧 joseapt.arg2603@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/jose-angel-prieto-77048b1b2/" target="_blank" class="contact-item">🔗 LinkedIn</a>
+                    <a href="https://drive.google.com/drive/folders/1ktA_oJfv8-b7AXf1p024mBlSobzN9Ws1?usp=drive_link" target="_blank" class="contact-item">Certificados</a>
+                    <span class="contact-item">Mendoza, ARG</span>
                 </div>
-            </header>
+            </div>
+        </header>
 
-            <main class="cv-body">
-                <section>
-                    <h2>Perfil Profesional</h2>
-                    <p>
-                        Especialista <span class="kw">Semi-Senior (SSR)</span> con más de 8 años de experiencia integrando la gestión administrativa y la infraestructura tecnológica. Experto en soporte técnico Nivel 2/3, implementación de sistemas <span class="kw">ERP (DEBO/DEAM)</span> y coordinación de proyectos bajo metodologías ágiles. Dominio avanzado de herramientas cloud para gestión de flujos de trabajo internacionales. Sólida capacidad en <span class="kw">Desarrollo Web Full Stack</span>, automatización de procesos y diseño visual publicitario orientado a la conversión y resultados medibles.
-                    </p>
-                </section>
+        <main class="cv-body">
+            <section>
+<br>
+                <h2>Perfil Profesional</h2>
+                <p>
+                    Especialista <span class="kw">Semi-Senior (SSR)</span> con más de 8 años de experiencia integrando la gestión administrativa y la infraestructura tecnológica. Experto en soporte técnico Nivel 2/3, implementación de sistemas <span class="kw">ERP (DEBO/DEAM)</span> y coordinación de proyectos bajo metodologías ágiles. Dominio avanzado de herramientas cloud para gestión de flujos de trabajo internacionales. Sólida capacidad en <span class="kw">Desarrollo Web Full Stack</span>, automatización de procesos y diseño visual publicitario orientado a la conversión y resultados medibles.
+                </p>
+            </section>
+<br>
+            <section>
+                <h2>Infraestructura para Trabajo Remoto</h2>
+                <div class="specs-grid">
+                    <div class="spec-item"><strong>Procesador</strong> Ryzen 3 (Quad-Core)</div>
+                    <div class="spec-item"><strong>RAM</strong> 16 GB DDR4</div>
+                    <div class="spec-item"><strong>Disco</strong> 700 GB SSD</div>
+                    <div class="spec-item"><strong>Internet</strong> 300 Mbps Fibra</div>
+                </div>
+            </section>
+<br>
+            <section>
+                <h2>Experiencia Profesional</h2>
 
-                <section>
-                    <h2>Infraestructura para Trabajo Remoto</h2>
-                    <div class="specs-grid">
-                        <div class="spec-item"><strong>Procesador</strong><br>Ryzen 3 (Quad-Core)</div>
-                        <div class="spec-item"><strong>RAM</strong><br>16 GB DDR4</div>
-                        <div class="spec-item"><strong>Disco</strong><br>700 GB SSD</div>
-                        <div class="spec-item"><strong>Internet</strong><br>300 Mbps Fibra</div>
-                    </div>
-                </section>
+                <div class="exp-item">
+                    <div class="exp-header"><span>Administrador de Sistemas Web y Contenidos</span><span>2023 – Actualidad</span></div>
+                    <span class="exp-company">Freelance Profesional (Remoto Internacional)</span>
+                    <ul class="bullet-list">
+                        <li>Gestión de entornos <span class="kw">WordPress</span> escalables, optimizando <span class="kw">Core Web Vitals</span> (WPO) y seguridad en servidores <span class="kw">cPanel/WHM</span> con un 99.9% de uptime.</li>
+                        <li>Diseño de interfaces web y piezas publicitarias digitales enfocadas en la experiencia de usuario (<span class="kw">UX/UI</span>) aumentando la tasa de conversión.</li>
+                        <li>Mantenimiento preventivo de bases de datos <span class="kw">MySQL</span> y automatización de procesos mediante scripts.</li>
+                    </ul>
+                </div>
 
-                <section>
-                    <h2>Experiencia Profesional</h2>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Administrador de Sistemas Web y Contenidos</span><span>2023 – Actualidad</span></div>
-                        <span class="exp-company">Freelance Profesional (Remoto Internacional)</span>
-                        <ul class="bullet-list">
-                            <li>Gestión de entornos <span class="kw">WordPress</span> escalables, optimizando <span class="kw">Core Web Vitals</span> (WPO) y seguridad en servidores <span class="kw">cPanel/WHM</span> con un 99.9% de uptime.</li>
-                            <li>Diseño de interfaces web y piezas publicitarias digitales enfocadas en la experiencia de usuario (<span class="kw">UX/UI</span>) aumentando la tasa de conversión.</li>
-                            <li>Mantenimiento preventivo de bases de datos <span class="kw">MySQL</span> y automatización de procesos mediante scripts.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Especialista de Soporte e Implementación ERP</span><span>2021 – 2022</span></div>
-                        <span class="exp-company">DOTAR SOLUCIONES (Mendoza, Argentina)</span>
-                        <ul class="bullet-list">
-                            <li>Lideré despliegues del sistema <span class="kw">DEAM</span>, centralizando la documentación operativa y tableros de seguimiento en <span class="kw">Notion y Trello</span> para reducir tiempos de implementación.</li>
-                            <li>Resolución de incidencias críticas de infraestructura y redes de facturación electrónica bajo estándares <span class="kw">SLA</span>.</li>
-                            <li>Auditoría técnica y repotenciación de hardware para optimizar la eficiencia operativa de clientes corporativos.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Soporte Técnico Nivel 2 / Implementador ERP DEBO</span><span>2019 – 2020</span></div>
-                        <span class="exp-company">FOCA SOFTWARE (Argentina)</span>
-                        <ul class="bullet-list">
-                            <li>Implementación técnica del <span class="kw">ERP DEBO</span>, traduciendo requerimientos administrativos en soluciones funcionales de software personalizadas.</li>
-                            <li>Gestión de soporte avanzado y creación de bases de conocimiento técnicas para mejorar el tiempo de respuesta.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Supervisor de Sistemas y Proyectos Web</span><span>2016 – 2019</span></div>
-                        <span class="exp-company">TUTRABAJO VIRTUAL (Remoto EE.UU. / Venezuela)</span>
-                        <ul class="bullet-list">
-                            <li>Coordinación de equipos técnicos internacionales utilizando <span class="kw">Asana</span> para el control de <span class="kw">KPIs</span> y entregables.</li>
-                            <li>Desarrollo de plataformas e-commerce y sitios web corporativos bajo protocolos de seguridad SSL/TLS.</li>
-                            <li>Gestión de ciberseguridad y acceso remoto seguro para operaciones globales.</li>
-                        </ul>
-                    </div>
-                </section>
+                <div class="exp-item">
+                    <div class="exp-header"><span>Especialista de Soporte e Implementación ERP</span><span>2021 – 2022</span></div>
+                    <span class="exp-company">DOTAR SOLUCIONES (Mendoza, Argentina)</span>
+                    <ul class="bullet-list">
+                        <li>Lideré despliegues del sistema <span class="kw">DEAM</span>, centralizando la documentación operativa y tableros de seguimiento en <span class="kw">Notion y Trello</span> para reducir tiempos de implementación.</li>
+                        <li>Resolución de incidencias críticas de infraestructura y redes de facturación electrónica bajo estándares <span class="kw">SLA</span>.</li>
+                        <li>Auditoría técnica y repotenciación de hardware para optimizar la eficiencia operativa de clientes corporativos.</li>
+                    </ul>
+                </div>
 
-                <section>
-                    <h2>Hard Skills & Tecnologías</h2>
-                    <div class="skills-grid-main">
-                        <div>
-                            <div class="skill-group">
-                                <span class="skill-title">Gestión Ágil & Cloud PM</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Scrum</span> <span class="tag">Kanban</span> <span class="tag">Notion</span> <span class="tag">Asana</span> <span class="tag">Trello</span> <span class="tag">Jira</span> <span class="tag">Slack</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Administración & Estrategia</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Microsoft 365</span> <span class="tag">Google Workspace</span> <span class="tag">Excel Avanzado</span> <span class="tag">Activos IT</span> <span class="tag">Facturación Electrónica</span> <span class="tag">KPIs</span> 
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Soporte & Infraestructura</span>
-                                <div class="skill-tags">
-                                    <span class="tag">TeamViewer/AnyDesk</span> <span class="tag">L2/L3 Troubleshooting</span> <span class="tag">Win 10/11</span> <span class="tag">Linux</span> <span class="tag">ERP DEBO/DEAM</span> <span class="tag">VPN</span> <span class="tag">Ciberseguridad</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="skill-group">
-                                <span class="skill-title">Diseño Gráfico & Publicitario</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Photoshop</span> <span class="tag">Illustrator</span> <span class="tag">Diseño UI</span> <span class="tag">Branding</span> <span class="tag">Banners</span> <span class="tag">Identidad Visual</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Desarrollo & Programación</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Python</span> <span class="tag">HTML5/CSS3</span> <span class="tag">Bootstrap</span> <span class="tag">JavaScript</span> <span class="tag">MySQL</span> <span class="tag">WordPress</span> <span class="tag">FTP</span> <span class="tag">Git</span> <span class="tag">SEO Técnico</span>
-                                </div> 
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">E-commerce & CRM</span>
-                                <div class="skill-tags">
-                                    <span class="tag">WooCommerce</span> <span class="tag">Analytics</span> <span class="tag">HubSpot</span> <span class="tag">Zapier</span> <span class="tag">Email Marketing</span> <span class="tag">Shopify</span> <span class="tag">Meta Business</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div class="exp-item">
+                    <div class="exp-header"><span>Soporte Técnico Nivel 2 / Implementador ERP DEBO</span><span>2019 – 2020</span></div>
+                    <span class="exp-company">FOCA SOFTWARE (Argentina)</span>
+                    <ul class="bullet-list">
+                        <li>Implementación técnica del <span class="kw">ERP DEBO</span>, traduciendo requerimientos administrativos en soluciones funcionales de software personalizadas.</li>
+                        <li>Gestión de soporte avanzado y creación de bases de conocimiento técnicas para mejorar el tiempo de respuesta.</li>
+                    </ul>
+                </div>
 
-                <div class="bottom-layout">
-                    <section>
-                        <h2>Educación & Idiomas</h2>
-                        <div class="edu-item">
-                            <p class="edu-title">Lic. en Administración de Empresas</p>
-                            <p class="edu-info">UNERMB - Venezuela (2012–2015)</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">T.S.U. en Informática</p>
-                            <p class="edu-info">IUTIRLA - Venezuela (2008–2011)</p>
-                        </div>
-                        <div style="margin-top: 20px;">
-                            <div class="edu-item">
-                                <p class="edu-title">Español <span style="font-weight:400; color:#555;">| Nativo</span></p>
-                            </div>
-                            <div class="edu-item">
-                                <p class="edu-title">Inglés <span style="font-weight:400; color:#555;">| Nivel B1 (Técnico)</span></p>
-                                <p class="edu-info">Lectura fluida y redacción técnica en IT.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2 style="display: flex; justify-content: space-between; align-items: center;">
-                            Certificaciones 
-                            <a href="https://drive.google.com/drive/folders/1ktA_oJfv8-b7AXf1p024mBlSobzN9Ws1?usp=drive_link" class="cert-link" target="_blank">Ver Folder</a>
-                        </h2>
-                        <div class="edu-item">
-                            <p class="edu-title">Full Stack & Web Professional</p>
-                            <p class="edu-info">Desarrollo escalable, CMS, UX/UI y WPO.</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">Mantenimiento Avanzado de PC</p>
-                            <p class="edu-info">Hardware y Diagnóstico electrónico.</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">Diseño Gráfico Digital</p>
-                            <p class="edu-info">Edición y activos web.</p>
-                        </div>
-                        <div class="skill-group" style="margin-top: 25px;">
-                            <span class="skill-title">Competencias Transversales</span>
+                <div class="exp-item">
+                    <div class="exp-header"><span>Supervisor de Sistemas y Proyectos Web</span><span>2016 – 2019</span></div>
+                    <span class="exp-company">TUTRABAJO VIRTUAL (Remoto EE.UU. / Venezuela)</span>
+                    <ul class="bullet-list">
+                        <li>Coordinación de equipos técnicos internacionales utilizando <span class="kw">Asana</span> para el control de <span class="kw">KPIs</span> y entregables.</li>
+                        <li>Desarrollo de plataformas e-commerce y sitios web corporativos bajo protocolos de seguridad SSL/TLS.</li>
+                        <li>Gestión de ciberseguridad y acceso remoto seguro para operaciones globales.</li>
+                    </ul>
+                </div>
+            </section>
+<br>
+            <section>
+                <h2>Hard Skills & Tecnologías</h2>
+                <div class="skills-grid-main">
+                    <div>
+                        <div class="skill-group">
+                            <span class="skill-title">Gestión Ágil & Cloud PM</span>
                             <div class="skill-tags">
-                                <span class="tag">Liderazgo</span>
-                                <span class="tag">Comunicación Eficaz</span>
-                                <span class="tag">Resolución de Conflictos</span>
-                                <span class="tag">Trabajo Remoto</span>
+                                <span class="tag">Scrum</span> <span class="tag">Kanban</span> <span class="tag">Notion</span> <span class="tag">Asana</span> <span class="tag">Trello</span> <span class="tag">Jira</span> <span class="tag">Slack</span>
                             </div>
                         </div>
-                    </section>
-                </div>
-            </main>
-        </div>
-
-        <div id="cv-en" class="cv-content">
-            <header>
-                <img src="https://drive.google.com/thumbnail?id=1JV2s-BmTU_5SqqBTEH8HT1JNEUJsKtHL&sz=w500" 
-                     onerror="this.src='perfil.jpg'" alt="Jose Angel Prieto" class="profile-img">
-                <div class="header-content">
-                    <h1>Jose Angel Prieto</h1>
-                    <p class="job-title">IT Specialist SSR | Business Administrator | Project Coordinator</p>
-                    <div class="contact-info">
-                        <a href="tel:+542613432056" class="contact-item">📞 +54 261 343 2056</a>
-                        <a href="mailto:joseapt.arg2603@gmail.com" class="contact-item">📧 Contact</a>
-                        <a href="https://www.linkedin.com/in/jose-angel-prieto-77048b1b2/" target="_blank" class="contact-item">🔗 LinkedIn</a>
-                        <span class="contact-item">📍 Mendoza, ARG</span>
-                    </div>
-                </div>
-            </header>
-
-            <main class="cv-body">
-                <section>
-                    <h2>Professional Profile</h2>
-                    <p>
-                        <span class="kw">Semi-Senior (SSR) Specialist</span> with over 8 years of experience integrating administrative management and technological infrastructure. Expert in Level 2/3 technical support, <span class="kw">ERP (DEBO/DEAM)</span> system implementation, and project coordination under agile methodologies. Advanced command of cloud tools for international workflow management. Solid capacity in <span class="kw">Full Stack Web Development</span>, process automation, and visual advertising design oriented towards conversion and measurable results.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>Remote Work Infrastructure</h2>
-                    <div class="specs-grid">
-                        <div class="spec-item"><strong>Processor</strong><br>Ryzen 3 (Quad-Core)</div>
-                        <div class="spec-item"><strong>RAM</strong><br>16 GB DDR4</div>
-                        <div class="spec-item"><strong>Storage</strong><br>700 GB SSD</div>
-                        <div class="spec-item"><strong>Internet</strong><br>300 Mbps Fiber</div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Professional Experience</h2>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Web Systems & Content Administrator</span><span>2023 – Present</span></div>
-                        <span class="exp-company">Professional Freelancer (International Remote)</span>
-                        <ul class="bullet-list">
-                            <li>Management of scalable <span class="kw">WordPress</span> environments, optimizing <span class="kw">Core Web Vitals</span> (WPO) and security on <span class="kw">cPanel/WHM</span> servers with 99.9% uptime.</li>
-                            <li>Design of web interfaces and digital advertising assets focused on User Experience (<span class="kw">UX/UI</span>), increasing conversion rates.</li>
-                            <li>Preventive maintenance of <span class="kw">MySQL</span> databases and process automation via scripts.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>ERP Support & Implementation Specialist</span><span>2021 – 2022</span></div>
-                        <span class="exp-company">DOTAR SOLUCIONES (Mendoza, Argentina)</span>
-                        <ul class="bullet-list">
-                            <li>Led deployments of the <span class="kw">DEAM</span> system, centralizing operational documentation and tracking dashboards in <span class="kw">Notion & Trello</span> to reduce implementation times.</li>
-                            <li>Resolution of critical infrastructure incidents and electronic billing networks under <span class="kw">SLA</span> standards.</li>
-                            <li>Technical auditing and hardware upgrades to optimize operational efficiency for corporate clients.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Level 2 Technical Support / ERP Implementer</span><span>2019 – 2020</span></div>
-                        <span class="exp-company">FOCA SOFTWARE (Argentina)</span>
-                        <ul class="bullet-list">
-                            <li>Technical implementation of <span class="kw">ERP DEBO</span>, translating administrative requirements into customized functional software solutions.</li>
-                            <li>Advanced support management and creation of technical knowledge bases to improve response times.</li>
-                        </ul>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header"><span>Web Projects & Systems Supervisor</span><span>2016 – 2019</span></div>
-                        <span class="exp-company">TUTRABAJO VIRTUAL (Remote USA / Venezuela)</span>
-                        <ul class="bullet-list">
-                            <li>Coordination of international technical teams using <span class="kw">Asana</span> for <span class="kw">KPI</span> tracking and deliverables.</li>
-                            <li>Development of e-commerce platforms and corporate websites under SSL/TLS security protocols.</li>
-                            <li>Cybersecurity management and secure remote access for global operations.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Hard Skills & Technologies</h2>
-                    <div class="skills-grid-main">
-                        <div>
-                            <div class="skill-group">
-                                <span class="skill-title">Agile Mgmt & Cloud PM</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Scrum</span> <span class="tag">Kanban</span> <span class="tag">Notion</span> <span class="tag">Asana</span> <span class="tag">Trello</span> <span class="tag">Jira</span> <span class="tag">Slack</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Admin & Strategy</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Microsoft 365</span> <span class="tag">Google Workspace</span> <span class="tag">Advanced Excel</span> <span class="tag">IT Assets</span> <span class="tag">E-Invoicing</span> <span class="tag">KPIs</span> 
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Support & Infrastructure</span>
-                                <div class="skill-tags">
-                                    <span class="tag">TeamViewer/AnyDesk</span> <span class="tag">L2/L3 Troubleshooting</span> <span class="tag">Win 10/11</span> <span class="tag">Linux</span> <span class="tag">ERP DEBO/DEAM</span> <span class="tag">VPN</span> <span class="tag">Cybersecurity</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="skill-group">
-                                <span class="skill-title">Graphic Design & Ads</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Photoshop</span> <span class="tag">Illustrator</span> <span class="tag">UI Design</span> <span class="tag">Branding</span> <span class="tag">Banners</span> <span class="tag">Visual Identity</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">Development & Coding</span>
-                                <div class="skill-tags">
-                                    <span class="tag">Python</span> <span class="tag">HTML5/CSS3</span> <span class="tag">Bootstrap</span> <span class="tag">JavaScript</span> <span class="tag">MySQL</span> <span class="tag">WordPress</span> <span class="tag">FTP</span> <span class="tag">Git</span> <span class="tag">Tech SEO</span>
-                                </div> 
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-title">E-commerce & CRM</span>
-                                <div class="skill-tags">
-                                    <span class="tag">WooCommerce</span> <span class="tag">Analytics</span> <span class="tag">HubSpot</span> <span class="tag">Zapier</span> <span class="tag">Email Marketing</span> <span class="tag">Shopify</span> <span class="tag">Meta Business</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="bottom-layout">
-                    <section>
-                        <h2>Education & Languages</h2>
-                        <div class="edu-item">
-                            <p class="edu-title">B.A. in Business Administration</p>
-                            <p class="edu-info">UNERMB - Venezuela (2012–2015)</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">University Technician in Computer Science</p>
-                            <p class="edu-info">IUTIRLA - Venezuela (2008–2011)</p>
-                        </div>
-                        <div style="margin-top: 20px;">
-                            <div class="edu-item">
-                                <p class="edu-title">Spanish <span style="font-weight:400; color:#555;">| Native</span></p>
-                            </div>
-                            <div class="edu-item">
-                                <p class="edu-title">English <span style="font-weight:400; color:#555;">| B1 Level (Technical)</span></p>
-                                <p class="edu-info">Fluent reading and technical writing in IT.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2 style="display: flex; justify-content: space-between; align-items: center;">
-                            Certifications 
-                            <a href="https://drive.google.com/drive/folders/1ktA_oJfv8-b7AXf1p024mBlSobzN9Ws1?usp=drive_link" class="cert-link" target="_blank">View Folder</a>
-                        </h2>
-                        <div class="edu-item">
-                            <p class="edu-title">Full Stack & Web Professional</p>
-                            <p class="edu-info">Scalable development, CMS, UX/UI, and WPO.</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">Advanced PC Maintenance</p>
-                            <p class="edu-info">Hardware and Electronic Diagnosis.</p>
-                        </div>
-                        <div class="edu-item">
-                            <p class="edu-title">Digital Graphic Design</p>
-                            <p class="edu-info">Professional editing and web assets.</p>
-                        </div>
-                        <div class="skill-group" style="margin-top: 25px;">
-                            <span class="skill-title">Soft Skills / Competencies</span>
+                        <div class="skill-group">
+                            <span class="skill-title">Administración & Estrategia</span>
                             <div class="skill-tags">
-                                <span class="tag">Team Leadership</span>
-                                <span class="tag">Effective Communication</span>
-                                <span class="tag">Conflict Resolution</span>
-                                <span class="tag">Remote Adaptability</span>
+                                <span class="tag">Microsoft 365</span> <span class="tag">Google Workspace</span> <span class="tag">Excel Avanzado</span> <span class="tag">Activos IT</span> <span class="tag">Facturación Electrónica</span> <span class="tag">KPIs</span> 
                             </div>
                         </div>
-                    </section>
+                        <div class="skill-group">
+                            <span class="skill-title">Soporte & Infraestructura</span>
+                            <div class="skill-tags">
+                                <span class="tag">TeamViewer/AnyDesk</span> <span class="tag">L2/L3 Troubleshooting</span> <span class="tag">Win 10/11</span> <span class="tag">Linux</span> <span class="tag">ERP DEBO/DEAM</span> <span class="tag">VPN</span> <span class="tag">Ciberseguridad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-group">
+                            <span class="skill-title">Diseño Gráfico & Publicitario</span>
+                            <div class="skill-tags">
+                                <span class="tag">Photoshop</span> <span class="tag">Illustrator</span> <span class="tag">Diseño UI</span> <span class="tag">Branding</span> <span class="tag">Banners</span> <span class="tag">Identidad Visual</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-title">Desarrollo & Programación</span>
+                            <div class="skill-tags">
+                                <span class="tag">Python</span> <span class="tag">HTML5/CSS3</span> <span class="tag">Bootstrap</span> <span class="tag">JavaScript</span> <span class="tag">MySQL</span> <span class="tag">WordPress</span> <span class="tag">FTP</span> <span class="tag">Git</span> <span class="tag">SEO Técnico</span>
+                            </div> 
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-title">E-commerce & CRM</span>
+                            <div class="skill-tags">
+                                <span class="tag">WooCommerce</span> <span class="tag">Analytics</span> <span class="tag">HubSpot</span> <span class="tag">Zapier</span> <span class="tag">Email Marketing</span> <span class="tag">Shopify</span> <span class="tag">Meta Business</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </main>
-        </div>
-        
-        <footer class="footer-credit">
-            &copy; Jose Angel Prieto - CV Online
-        </footer>
+            </section>
+
+            <div class="bottom-layout">
+                <section>
+                    <h2>Educación & Idiomas</h2>
+                    <div class="edu-item">
+                        <p class="edu-title">Lic. en Administración de Empresas</p>
+                        <p class="edu-info">UNERMB - Venezuela (2012–2015)</p>
+                    </div>
+                    <div class="edu-item">
+                        <p class="edu-title">T.S.U. en Informática</p>
+                        <p class="edu-info">IUTIRLA - Venezuela (2008–2011)</p>
+                    </div>
+                    
+                    <div class="sub-divider"></div>
+                    
+                    <div class="edu-item">
+                        <p class="edu-title">Español <span style="font-weight:400; color:#555;">| Nativo</span></p>
+                    </div>
+                    <div class="edu-item">
+                        <p class="edu-title">Inglés <span style="font-weight:400; color:#555;">| Nivel B1 (Técnico)</span></p>
+                        <p class="edu-info">Lectura fluida y redacción técnica.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Certificaciones | <a href="https://drive.google.com/drive/folders/1ktA_oJfv8-b7AXf1p024mBlSobzN9Ws1?usp=drive_link" class="cert-link" target="_blank">Ver Folder</a></h2>
+                    <div class="edu-item">
+                        <p class="edu-title">Full Stack & Web Professional</p>
+                        <p class="edu-info">Desarrollo escalable, CMS, UX/UI y WPO.</p>
+                    </div>
+                    <div class="edu-item">
+                        <p class="edu-title">Mantenimiento Avanzado de PC</p>
+                        <p class="edu-info">Hardware y Diagnóstico electrónico.</p>
+                    </div>
+                    <div class="edu-item">
+                        <p class="edu-title">Diseño Gráfico Digital</p>
+                        <p class="edu-info">Edición y activos web.</p>
+                    </div>
+
+                    <div class="sub-divider"></div>
+
+                    <div class="skill-group">
+                        <span class="skill-title" style="border:none; margin-bottom:2px;">Competencias Transversales</span>
+                        <div class="skill-tags">
+                            <span class="tag">Liderazgo</span>
+                            <span class="tag">Comunicación Eficaz</span>
+                            <span class="tag">Resolución Conflictos</span>
+                            <span class="tag">Remoto</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
-
-    <script>
-        function switchLanguage(lang) {
-            // Ocultar todos los contenidos
-            document.querySelectorAll('.cv-content').forEach(el => el.classList.remove('active'));
-            // Desactivar todos los botones
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-
-            // Mostrar el contenido seleccionado
-            document.getElementById('cv-' + lang).classList.add('active');
-            
-            // Activar el botón correspondiente
-            // Buscamos el botón que tenga el onclick coincidente
-            const buttons = document.querySelectorAll('.lang-btn');
-            if (lang === 'es') buttons[0].classList.add('active');
-            else buttons[1].classList.add('active');
-        }
-    </script>
 
 </body>
 </html>
-
